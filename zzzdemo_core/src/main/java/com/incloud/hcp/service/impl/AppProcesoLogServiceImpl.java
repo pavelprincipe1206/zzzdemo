@@ -83,6 +83,7 @@ public abstract class AppProcesoLogServiceImpl extends JPACustomServiceImpl<AppP
                 .withMatcher(AppProcesoLog_.metodoProgramacion.getName(), match -> match.ignoreCase().startsWith())
                 .withMatcher(AppProcesoLog_.parametroEntrada.getName(), match -> match.ignoreCase().startsWith())
                 .withMatcher(AppProcesoLog_.resultadoSalida.getName(), match -> match.ignoreCase().startsWith());
+        //sdsd
         return matcher;
     }
 
