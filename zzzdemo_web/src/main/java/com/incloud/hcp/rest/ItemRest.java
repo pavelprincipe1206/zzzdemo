@@ -11,12 +11,12 @@ package com.incloud.hcp.rest;
 
 import com.incloud.hcp.common.BindingErrorsResponse;
 import com.incloud.hcp.common.graph.GraphBean;
-import com.incloud.hcp.domain.MtrProveedor;
-import com.incloud.hcp.domain.MtrVendedor;
-import com.incloud.hcp.domain.response.MtrVendedorResponse;
-import com.incloud.hcp.repository.delta.MtrVendedorDeltaRepository;
+import com.incloud.hcp.domain.Boleta;
+import com.incloud.hcp.domain.Item;
+import com.incloud.hcp.domain.response.ItemResponse;
+import com.incloud.hcp.repository.delta.ItemDeltaRepository;
 import com.incloud.hcp.rest._framework.JPACustomRest;
-import com.incloud.hcp.service.delta.MtrVendedorDeltaService;
+import com.incloud.hcp.service.delta.ItemDeltaService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -33,24 +33,24 @@ import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-public abstract class MtrVendedorRest extends JPACustomRest<MtrVendedorResponse, MtrVendedor, Integer> {
+public abstract class ItemRest extends JPACustomRest<ItemResponse, Item, Integer> {
 
     @Autowired
-    protected MtrVendedorDeltaService mtrVendedorDeltaService;
+    protected ItemDeltaService itemDeltaService;
 
     @Autowired
-    protected MtrVendedorDeltaRepository mtrVendedorDeltaRepository;
+    protected ItemDeltaRepository itemDeltaRepository;
 
     protected String setObtenerNombreArchivoExcel() {
-        return "MtrVendedor";
+        return "Item";
     }
 
     /************************/
     /* Instancia de Bean    */
     /************************/
-    protected final MtrVendedor createInstance() {
-        MtrVendedor mtrVendedor = new MtrVendedor();
-        return mtrVendedor;
+    protected final Item createInstance() {
+        Item item = new Item();
+        return item;
     }
 
     /*****************/
@@ -58,11 +58,11 @@ public abstract class MtrVendedorRest extends JPACustomRest<MtrVendedorResponse,
     /*****************/
 
     /**
-    * Contador de registros para el atributo mtrProveedor.
+    * Contador de registros para el atributo idBoleta.
     */
-    @ApiOperation(value = "Contador de registros para el atributo mtrProveedor", produces = "application/json")
-    @PostMapping(value = "/countByMtrProveedor", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Long> countByMtrProveedor(@RequestBody @Valid MtrProveedor mtrProveedor, BindingResult bindingResult) throws URISyntaxException {
+    @ApiOperation(value = "Contador de registros para el atributo idBoleta", produces = "application/json")
+    @PostMapping(value = "/countByBoleta", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Long> countByBoleta(@RequestBody @Valid Boleta idBoleta, BindingResult bindingResult) throws URISyntaxException {
         BindingErrorsResponse errors = new BindingErrorsResponse();
         HttpHeaders headers = new HttpHeaders();
         if (bindingResult.hasErrors()) {
@@ -73,9 +73,9 @@ public abstract class MtrVendedorRest extends JPACustomRest<MtrVendedorResponse,
             headers.add("errors", errors.toJSON());
             return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
         }
-        log.debug("Ingresando countByMtrProveedor");
+        log.debug("Ingresando countByBoleta");
         try {
-            return Optional.ofNullable(this.mtrVendedorDeltaService.countByMtrProveedor(mtrProveedor)).map(l -> new ResponseEntity<>(l, HttpStatus.OK))
+            return Optional.ofNullable(this.itemDeltaService.countByBoleta(idBoleta)).map(l -> new ResponseEntity<>(l, HttpStatus.OK))
                     .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
         } catch (Exception e) {
             if (this.devuelveRuntimeException) {
@@ -87,14 +87,14 @@ public abstract class MtrVendedorRest extends JPACustomRest<MtrVendedorResponse,
     }
 
     /**
-    * Genera Grafico de registros para el atributo mtrProveedor.
+    * Genera Grafico de registros para el atributo idBoleta.
     */
-    @ApiOperation(value = "Genera Grafico de registros para el atributo mtrProveedor", produces = "application/json")
-    @GetMapping(value = "/graphByMtrProveedor", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<GraphBean> graphByMtrProveedor() throws URISyntaxException {
-        log.debug("Ingresando graphByMtrProveedor");
+    @ApiOperation(value = "Genera Grafico de registros para el atributo idBoleta", produces = "application/json")
+    @GetMapping(value = "/graphByBoleta", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<GraphBean> graphByBoleta() throws URISyntaxException {
+        log.debug("Ingresando graphByBoleta");
         try {
-            return Optional.ofNullable(this.mtrVendedorDeltaService.graphByMtrProveedor()).map(l -> new ResponseEntity<>(l, HttpStatus.OK))
+            return Optional.ofNullable(this.itemDeltaService.graphByBoleta()).map(l -> new ResponseEntity<>(l, HttpStatus.OK))
                     .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
         } catch (Exception e) {
             if (this.devuelveRuntimeException) {

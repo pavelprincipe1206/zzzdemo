@@ -9,27 +9,27 @@
  */
 package com.incloud.hcp.rest;
 
-import com.incloud.hcp.domain.MtrHistorialApagar;
-import com.incloud.hcp.domain.response.MtrHistorialApagarResponse;
-import com.incloud.hcp.repository.delta.MtrHistorialApagarDeltaRepository;
+import com.incloud.hcp.domain.Boleta;
+import com.incloud.hcp.domain.response.BoletaResponse;
+import com.incloud.hcp.repository.delta.BoletaDeltaRepository;
 import com.incloud.hcp.rest._framework.JPACustomRest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class MtrHistorialApagarRest extends JPACustomRest<MtrHistorialApagarResponse, MtrHistorialApagar, Integer> {
+public abstract class BoletaRest extends JPACustomRest<BoletaResponse, Boleta, Integer> {
 
     @Autowired
-    protected MtrHistorialApagarDeltaRepository mtrHistorialApagarDeltaRepository;
+    protected BoletaDeltaRepository boletaDeltaRepository;
 
     protected String setObtenerNombreArchivoExcel() {
-        return "MtrHistorialApagar";
+        return "Boleta";
     }
 
     /************************/
     /* Instancia de Bean    */
     /************************/
-    protected final MtrHistorialApagar createInstance() {
-        MtrHistorialApagar mtrHistorialApagar = new MtrHistorialApagar();
-        return mtrHistorialApagar;
+    protected final Boleta createInstance() {
+        Boleta boleta = new Boleta();
+        return boleta;
     }
 
     /*****************/

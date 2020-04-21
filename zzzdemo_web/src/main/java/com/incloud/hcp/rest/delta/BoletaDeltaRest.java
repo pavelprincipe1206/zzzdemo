@@ -9,12 +9,12 @@
  */
 package com.incloud.hcp.rest.delta;
 
-import com.incloud.hcp.rest.MtrUnidadMedidaRest;
+import com.incloud.hcp.rest.BoletaRest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/mtrUnidadMedida")
-public class MtrUnidadMedidaDeltaRest extends MtrUnidadMedidaRest {
+@RequestMapping("/api/boleta")
+public class BoletaDeltaRest extends BoletaRest {
 
 }

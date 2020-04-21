@@ -9,12 +9,12 @@
  */
 package com.incloud.hcp.rest.delta;
 
-import com.incloud.hcp.rest.MtrAprobadorRest;
+import com.incloud.hcp.rest.ItemRest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/mtrAprobador")
-public class MtrAprobadorDeltaRest extends MtrAprobadorRest {
+@RequestMapping("/api/item")
+public class ItemDeltaRest extends ItemRest {
 
 }

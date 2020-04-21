@@ -9,27 +9,27 @@
  */
 package com.incloud.hcp.rest;
 
-import com.incloud.hcp.domain.MtrCentroAlmacen;
-import com.incloud.hcp.domain.response.MtrCentroAlmacenResponse;
-import com.incloud.hcp.repository.delta.MtrCentroAlmacenDeltaRepository;
+import com.incloud.hcp.domain.Prueba;
+import com.incloud.hcp.domain.response.PruebaResponse;
+import com.incloud.hcp.repository.delta.PruebaDeltaRepository;
 import com.incloud.hcp.rest._framework.JPACustomRest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class MtrCentroAlmacenRest extends JPACustomRest<MtrCentroAlmacenResponse, MtrCentroAlmacen, Integer> {
+public abstract class PruebaRest extends JPACustomRest<PruebaResponse, Prueba, Long> {
 
     @Autowired
-    protected MtrCentroAlmacenDeltaRepository mtrCentroAlmacenDeltaRepository;
+    protected PruebaDeltaRepository pruebaDeltaRepository;
 
     protected String setObtenerNombreArchivoExcel() {
-        return "MtrCentroAlmacen";
+        return "Prueba";
     }
 
     /************************/
     /* Instancia de Bean    */
     /************************/
-    protected final MtrCentroAlmacen createInstance() {
-        MtrCentroAlmacen mtrCentroAlmacen = new MtrCentroAlmacen();
-        return mtrCentroAlmacen;
+    protected final Prueba createInstance() {
+        Prueba prueba = new Prueba();
+        return prueba;
     }
 
     /*****************/
