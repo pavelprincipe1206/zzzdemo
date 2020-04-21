@@ -9,23 +9,17 @@
  */
 package com.incloud.hcp.service.impl;
 
-import com.incloud.hcp.common.enums.AppParametriaLabelEnum;
-import com.incloud.hcp.common.enums.AppParametriaModuloEnum;
 import com.incloud.hcp.common.excel.ExcelDefault;
-import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.Prueba;
 import com.incloud.hcp.domain.Prueba_;
 import com.incloud.hcp.domain.response.PruebaResponse;
 import com.incloud.hcp.exception.ServiceException;
-import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
 import com.incloud.hcp.repository.delta.PruebaDeltaRepository;
 import com.incloud.hcp.service.PruebaService;
 import com.incloud.hcp.service._framework.bean.BeanCargaMasivoDTO;
 import com.incloud.hcp.service._framework.bean.BeanListaMasivoDTO;
 import com.incloud.hcp.service._framework.impl.JPACustomServiceImpl;
-import com.incloud.hcp.service.requireNew.PruebaRequireNewService;
 import com.incloud.hcp.service.support.PageRequestByExample;
-import com.incloud.hcp.utils.Constants;
 import com.incloud.hcp.utils.PredicateUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -59,14 +53,14 @@ public abstract class PruebaServiceImpl extends JPACustomServiceImpl<PruebaRespo
     protected final String CONFIG_TITLE = "com/incloud/hcp/excel/PruebaExcel.xml";
     private final Integer REGISTROS_COLOR = 10;
 
-    @Autowired
-    protected AppParametriaDeltaRepository appParametriaDeltaRepository;
+   /* @Autowired
+    protected AppParametriaDeltaRepository appParametriaDeltaRepository;*/
 
     @Autowired
     protected PruebaDeltaRepository pruebaDeltaRepository;
 
-    @Autowired
-    protected PruebaRequireNewService pruebaRequireNewService;
+    /*@Autowired
+    protected PruebaRequireNewService pruebaRequireNewService;*/
 
     /*****************************/
     /* Metodos de Busqueda       */
@@ -177,11 +171,11 @@ public abstract class PruebaServiceImpl extends JPACustomServiceImpl<PruebaRespo
         return prueba;
     }
 
-    protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
+    /*protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
         AppParametria appParametriaData = this.appParametriaDeltaRepository.getByModuloAndLabelAndStatus(AppParametriaModuloEnum.CARGA_EXCEL.getEstado(),
                 AppParametriaLabelEnum.INICIO_REGISTRO_DATA.getEstado(), Constants.ESTADO_ACTIVO);
         return appParametriaData;
-    }
+    }*/
 
     protected Prueba setInicializarBeanUpdateExcel() {
         Prueba bean = new Prueba();

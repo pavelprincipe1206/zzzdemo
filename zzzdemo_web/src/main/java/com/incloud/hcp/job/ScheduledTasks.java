@@ -1,15 +1,8 @@
 package com.incloud.hcp.job;
 
 
-import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
-import com.incloud.hcp.service.delta.CerNotaPedidoDeltaService;
-import com.incloud.hcp.service.delta.SapRfcDeltaService;
-import com.incloud.hcp.util.Utils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Component
@@ -19,16 +12,16 @@ public class ScheduledTasks {
 
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    @Autowired
+    /*@Autowired
     private CerNotaPedidoDeltaService cerNotaPedidoDeltaService;
 
     @Autowired
     private AppParametriaDeltaRepository appParametriaDeltaRepository;
 
     @Autowired
-    private SapRfcDeltaService sapRfcDeltaService;
+    private SapRfcDeltaService sapRfcDeltaService;*/
 
-    @Scheduled(cron = "0 5 * * * ?")
+    /*@Scheduled(cron = "0 5 * * * ?")
     public void scheduleActualizarNPNoVigentes() {
         logger.error("Cron Task scheduleActualizarNPNoVigentes :: Execution Time - {}", dateTimeFormatter.format(LocalDateTime.now()));
         try {
@@ -37,7 +30,7 @@ public class ScheduledTasks {
         catch (Exception e) {
             logger.error("Cron Task Fin JOB scheduleActualizarNPNoVigentes ERROR: " + Utils.obtieneMensajeErrorException(e));
         }
-    }
+    }*/
 
    /* @Scheduled(cron = "0 00 00 * * ?")
     public void scheduleSincronizarDiarioNotaPedido() {

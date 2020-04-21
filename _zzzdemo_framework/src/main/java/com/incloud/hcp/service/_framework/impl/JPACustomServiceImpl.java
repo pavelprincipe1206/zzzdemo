@@ -1,7 +1,6 @@
 package com.incloud.hcp.service._framework.impl;
 
 import com.incloud.hcp.common.excel.ExcelDefault;
-import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.BaseDomain;
 import com.incloud.hcp.domain.BaseResponseDomain;
 import com.incloud.hcp.exception.ServiceException;
@@ -436,10 +435,10 @@ public abstract class JPACustomServiceImpl<R extends BaseResponseDomain, T exten
         log.debug("Ingresando uploadExcel");
         List<BeanCargaMasivoDTO<T>> listaDTO = new ArrayList<BeanCargaMasivoDTO<T>>();
         int inicioRegistroData = 1;
-        AppParametria appParametriaData = this.setObtenerRegistroConfiguracionUploadExcel();
+        /*AppParametria appParametriaData = this.setObtenerRegistroConfiguracionUploadExcel();
         if (Optional.of(appParametriaData).isPresent()) {
             inicioRegistroData = new Integer(appParametriaData.getValue1()).intValue();
-        }
+        }*/
         try {
             Workbook workbook = new XSSFWorkbook(in);
             try {
@@ -489,7 +488,7 @@ public abstract class JPACustomServiceImpl<R extends BaseResponseDomain, T exten
         }
         return listaDTO;
     }
-    protected abstract AppParametria setObtenerRegistroConfiguracionUploadExcel();
+    //protected abstract AppParametria setObtenerRegistroConfiguracionUploadExcel();
     protected abstract T setInicializarBeanUpdateExcel();
     protected boolean depurarUploadExcel(T dto) {
         return true;

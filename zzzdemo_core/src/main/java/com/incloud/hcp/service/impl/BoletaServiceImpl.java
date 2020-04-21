@@ -9,23 +9,17 @@
  */
 package com.incloud.hcp.service.impl;
 
-import com.incloud.hcp.common.enums.AppParametriaLabelEnum;
-import com.incloud.hcp.common.enums.AppParametriaModuloEnum;
 import com.incloud.hcp.common.excel.ExcelDefault;
-import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.Boleta;
 import com.incloud.hcp.domain.Boleta_;
 import com.incloud.hcp.domain.response.BoletaResponse;
 import com.incloud.hcp.exception.ServiceException;
-import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
 import com.incloud.hcp.repository.delta.BoletaDeltaRepository;
 import com.incloud.hcp.service.BoletaService;
 import com.incloud.hcp.service._framework.bean.BeanCargaMasivoDTO;
 import com.incloud.hcp.service._framework.bean.BeanListaMasivoDTO;
 import com.incloud.hcp.service._framework.impl.JPACustomServiceImpl;
-import com.incloud.hcp.service.requireNew.BoletaRequireNewService;
 import com.incloud.hcp.service.support.PageRequestByExample;
-import com.incloud.hcp.utils.Constants;
 import com.incloud.hcp.utils.PredicateUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -61,14 +55,14 @@ public abstract class BoletaServiceImpl extends JPACustomServiceImpl<BoletaRespo
     protected final String CONFIG_TITLE = "com/incloud/hcp/excel/BoletaExcel.xml";
     private final Integer REGISTROS_COLOR = 10;
 
-    @Autowired
-    protected AppParametriaDeltaRepository appParametriaDeltaRepository;
+   /* @Autowired
+    protected AppParametriaDeltaRepository appParametriaDeltaRepository;*/
 
     @Autowired
     protected BoletaDeltaRepository boletaDeltaRepository;
 
-    @Autowired
-    protected BoletaRequireNewService boletaRequireNewService;
+    /*@Autowired
+    protected BoletaRequireNewService boletaRequireNewService;*/
 
     /*****************************/
     /* Metodos de Busqueda       */
@@ -201,11 +195,11 @@ public abstract class BoletaServiceImpl extends JPACustomServiceImpl<BoletaRespo
         return boleta;
     }
 
-    protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
+    /*protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
         AppParametria appParametriaData = this.appParametriaDeltaRepository.getByModuloAndLabelAndStatus(AppParametriaModuloEnum.CARGA_EXCEL.getEstado(),
                 AppParametriaLabelEnum.INICIO_REGISTRO_DATA.getEstado(), Constants.ESTADO_ACTIVO);
         return appParametriaData;
-    }
+    }*/
 
     protected Boleta setInicializarBeanUpdateExcel() {
         Boleta bean = new Boleta();

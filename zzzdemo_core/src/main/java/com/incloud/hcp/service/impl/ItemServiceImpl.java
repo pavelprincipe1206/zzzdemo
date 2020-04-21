@@ -9,20 +9,16 @@
  */
 package com.incloud.hcp.service.impl;
 
-import com.incloud.hcp.common.enums.AppParametriaLabelEnum;
-import com.incloud.hcp.common.enums.AppParametriaModuloEnum;
 import com.incloud.hcp.common.excel.ExcelDefault;
 import com.incloud.hcp.common.graph.GraphBarChart;
 import com.incloud.hcp.common.graph.GraphBean;
 import com.incloud.hcp.common.graph.GraphDataset;
 import com.incloud.hcp.common.graph.GraphPieChart;
-import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.Boleta;
 import com.incloud.hcp.domain.Item;
 import com.incloud.hcp.domain.Item_;
 import com.incloud.hcp.domain.response.ItemResponse;
 import com.incloud.hcp.exception.ServiceException;
-import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
 import com.incloud.hcp.repository.delta.BoletaDeltaRepository;
 import com.incloud.hcp.repository.delta.ItemDeltaRepository;
 import com.incloud.hcp.service.ItemService;
@@ -30,7 +26,6 @@ import com.incloud.hcp.service._framework.bean.BeanCargaMasivoDTO;
 import com.incloud.hcp.service._framework.bean.BeanListaMasivoDTO;
 import com.incloud.hcp.service._framework.impl.JPACustomServiceImpl;
 import com.incloud.hcp.service.delta.BoletaDeltaService;
-import com.incloud.hcp.service.requireNew.ItemRequireNewService;
 import com.incloud.hcp.service.support.PageRequestByExample;
 import com.incloud.hcp.utils.Constants;
 import com.incloud.hcp.utils.PredicateUtils;
@@ -68,14 +63,14 @@ public abstract class ItemServiceImpl extends JPACustomServiceImpl<ItemResponse,
     protected final String CONFIG_TITLE = "com/incloud/hcp/excel/ItemExcel.xml";
     private final Integer REGISTROS_COLOR = 10;
 
-    @Autowired
-    protected AppParametriaDeltaRepository appParametriaDeltaRepository;
+    /*@Autowired
+    protected AppParametriaDeltaRepository appParametriaDeltaRepository;*/
 
     @Autowired
     protected ItemDeltaRepository itemDeltaRepository;
 
-    @Autowired
-    protected ItemRequireNewService itemRequireNewService;
+    /*@Autowired
+    protected ItemRequireNewService itemRequireNewService;*/
 
     @Autowired
     protected BoletaDeltaService boletaDeltaService;
@@ -212,11 +207,11 @@ public abstract class ItemServiceImpl extends JPACustomServiceImpl<ItemResponse,
         return item;
     }
 
-    protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
+   /* protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
         AppParametria appParametriaData = this.appParametriaDeltaRepository.getByModuloAndLabelAndStatus(AppParametriaModuloEnum.CARGA_EXCEL.getEstado(),
                 AppParametriaLabelEnum.INICIO_REGISTRO_DATA.getEstado(), Constants.ESTADO_ACTIVO);
         return appParametriaData;
-    }
+    }*/
 
     protected Item setInicializarBeanUpdateExcel() {
         Item bean = new Item();

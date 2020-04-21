@@ -165,8 +165,7 @@ public class Item extends BaseDomain implements Identifiable<Integer>, Serializa
         return MoreObjects.toStringHelper(this) //
                 .add("id", getId()) //
                 .add("descripcion", getDescripcion()) //
-                .add("stock", getStock()) //
-                .add("idBole", getIdBole()) //    
+                .add("stock", getStock())  //
                 .toString();
     }
 }
