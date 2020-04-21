@@ -8,7 +8,7 @@ public class Estado {
     private int id;
     private int idEstado;
     private String descripcion;
-
+    //sdsds
     public Estado() {
     }
 
